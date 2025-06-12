@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Text-to-Speech </title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="text-center mb-0"><i class="fas fa-microphone me-2"></i>Text-to-Speech Indonesia</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="ttsForm" method="POST">
+                            <div class="mb-4">
+                                <label for="textInput" class="form-label fw-bold">Masukkan Teks:</label>
+                                <textarea class="form-control" id="textInput" name="text" rows="5"
+                                    placeholder="Ketik teks yang ingin diubah menjadi suara..." required></textarea>
+                                <div class="form-text">Maksimal 200 karakter (beberapa layanan TTS memiliki batasan)
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Kecepatan Bicara:</label>
+                                    <input type="range" class="form-range" min="0.5" max="2.5" step="0.01" id="speedRange"
+                                        name="speed" value="1"
+                                        oninput="document.getElementById('speedValue').innerText = this.value">
+                                    <div class="text-center mt-1">
+                                        <span>Lambat (0.5)</span>
+                                        <span class="mx-2 fw-bold" id="speedValue">1</span>
+                                        <span>Cepat (2.5)</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Jenis Suara:</label>
+                                    <div class="btn-group w-100" role="group">
+                                        <input type="radio" class="btn-check" name="gender" id="genderMale" value="male"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="genderMale"><i
+                                                class="fas fa-male me-2"></i>Pria</label>
+
+                                        <input type="radio" class="btn-check" name="gender" id="genderFemale"
+                                            value="female" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="genderFemale"><i
+                                                class="fas fa-female me-2"></i>Wanita</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-sync-alt me-2"></i>Generate & Download Suara
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        Aplikasi Text-to-Speech &copy; 2025
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
