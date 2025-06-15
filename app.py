@@ -56,6 +56,11 @@ def index():
                 print(f"File {filepath} tidak ditemukan atau gagal diproses setelah menunggu.")
 
         # Kirim file dan hapus setelah didownload
+        # Jika preview, tampilkan link audio di halaman, bukan langsung download
+        if request.form.get('preview') == '1':
+            audio_url = f"/static/audio/{filename}"
+            return render_template('index.html', audio_url=audio_url)
+
         @after_this_request
         def remove_file(response):
             try:

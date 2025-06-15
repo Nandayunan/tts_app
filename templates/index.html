@@ -34,8 +34,8 @@
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold">Kecepatan Bicara:</label>
-                                    <input type="range" class="form-range" min="0.5" max="2.5" step="0.01" id="speedRange"
-                                        name="speed" value="1"
+                                    <input type="range" class="form-range" min="0.5" max="2.5" step="0.01"
+                                        id="speedRange" name="speed" value="1"
                                         oninput="document.getElementById('speedValue').innerText = this.value">
                                     <div class="text-center mt-1">
                                         <span>Lambat (0.5)</span>
@@ -64,8 +64,21 @@
                                 <button type="submit" class="btn btn-primary btn-lg">
                                     <i class="fas fa-sync-alt me-2"></i>Generate & Download Suara
                                 </button>
+                                <button type="submit" class="btn btn-secondary btn-lg" name="preview" value="1">
+                                    <i class="fas fa-play me-2"></i>Preview Suara
+                                </button>
                             </div>
                         </form>
+
+                        {% if audio_url %}
+                        <div class="mt-4 text-center">
+                            <audio controls src="{{ audio_url }}" style="width:100%"></audio>
+                            <div class="mt-2">
+                                <a href="{{ audio_url }}" download class="btn btn-success"><i
+                                        class="fas fa-download me-2"></i>Download Suara</a>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="card-footer text-muted text-center">
                         Aplikasi Text-to-Speech &copy; 2025
